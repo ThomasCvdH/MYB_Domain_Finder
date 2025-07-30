@@ -19,6 +19,7 @@ library(tibble)
 # Input files
 transcriptome_file <- "atRTD3_29122021.fa"
 annotation_file <- "atRTD3_transfix.gtf"
+email = 'set_you_email_here@email.com' # Set your email for InterProScan API
 
 # InterProScan settings
 target_domain_id <- "IPR017930" # Myb-like DNA-binding domain
@@ -106,7 +107,7 @@ for (target_transcript_id in all_target_tx_ids) {
   iprscan_url <- "https://www.ebi.ac.uk/Tools/services/rest/iprscan5/run"
   submit_job <- POST(
     iprscan_url,
-    body = list(sequence = protein_sequence),
+    body = list(sequence = protein_sequence,email = email),
     encode = "form"
   )
   
